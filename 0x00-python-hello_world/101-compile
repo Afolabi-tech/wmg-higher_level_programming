@@ -1,0 +1,5 @@
+#!/bin/bash
+python3 -m py_compile "$PYFILE"
+
+mv "__pycache__/$(basename "${PYFILE%.*}").cpython-$(python3 -c 'import sys; print(f"{sys.version_info.major}{sys.version_info.minor}")').pyc" "${PYFILE}c"
+rmdir __pycache__ 2>/dev/null
