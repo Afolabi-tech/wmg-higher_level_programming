@@ -1,3 +1,0 @@
-my_secret_santa
-print_hidden
-print_school
