@@ -1,0 +1,108 @@
+The ``matrix_mul`` function
+==============================
+
+Import the function:
+
+    >>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+
+Multiply two square matrices:
+
+    >>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+    [[7, 10], [15, 22]]
+
+Multiply a 2x3 matrix by a 3x2 matrix:
+
+    >>> matrix_mul([[1, 2, 3], [4, 5, 6]], [[7, 8], [9, 10], [11, 12]])
+    [[58, 64], [139, 154]]
+
+Multiply single-element matrices:
+
+    >>> matrix_mul([[2]], [[3]])
+    [[6]]
+
+Multiply by an identity matrix:
+
+    >>> matrix_mul([[1, 2], [3, 4]], [[1, 0], [0, 1]])
+    [[1, 2], [3, 4]]
+
+Matrices can contain floats:
+
+    >>> matrix_mul([[1.5, 2.5]], [[1], [2]])
+    [[6.5]]
+
+Matrices can contain negative numbers:
+
+    >>> matrix_mul([[-1, 2], [3, -4]], [[1, 0], [0, 1]])
+    [[-1, 2], [3, -4]]
+
+m_a not a list raises a TypeError:
+
+    >>> matrix_mul(1, [[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    TypeError: m_a must be a list
+
+m_b not a list raises a TypeError:
+
+    >>> matrix_mul([[1, 2], [3, 4]], "School")
+    Traceback (most recent call last):
+    TypeError: m_b must be a list
+
+m_a not a list of lists raises a TypeError:
+
+    >>> matrix_mul([1, 2], [[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    TypeError: m_a must be a list of lists
+
+m_b not a list of lists raises a TypeError:
+
+    >>> matrix_mul([[1, 2], [3, 4]], [1, 2])
+    Traceback (most recent call last):
+    TypeError: m_b must be a list of lists
+
+m_a as an empty list raises a ValueError:
+
+    >>> matrix_mul([], [[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    ValueError: m_a can't be empty
+
+m_a as a list containing an empty list raises a ValueError:
+
+    >>> matrix_mul([[]], [[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    ValueError: m_a can't be empty
+
+m_b as an empty list raises a ValueError:
+
+    >>> matrix_mul([[1, 2], [3, 4]], [])
+    Traceback (most recent call last):
+    ValueError: m_b can't be empty
+
+m_a containing a non-number raises a TypeError:
+
+    >>> matrix_mul([[1, "a"], [3, 4]], [[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    TypeError: m_a should contain only integers or floats
+
+m_b containing a non-number raises a TypeError:
+
+    >>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, "b"]])
+    Traceback (most recent call last):
+    TypeError: m_b should contain only integers or floats
+
+m_a with rows of different sizes raises a TypeError:
+
+    >>> matrix_mul([[1, 2], [3]], [[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    TypeError: each row of m_a must be of the same size
+
+m_b with rows of different sizes raises a TypeError:
+
+    >>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3]])
+    Traceback (most recent call last):
+    TypeError: each row of m_b must be of the same size
+
+Matrices with incompatible dimensions raise a ValueError:
+
+    >>> matrix_mul([[1, 2, 3]], [[1, 2, 3]])
+    Traceback (most recent call last):
+    ValueError: m_a and m_b can't be multiplied
