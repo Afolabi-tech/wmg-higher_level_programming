@@ -1,0 +1,46 @@
+The ``say_my_name`` function
+==============================
+
+Import the function:
+
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Print a full name:
+
+    >>> say_my_name("John", "Smith")
+    My name is John Smith
+
+Print with only a first name (last_name defaults to an empty string):
+
+    >>> say_my_name("John")  # doctest: +NORMALIZE_WHITESPACE
+    My name is John
+
+Print with empty strings:
+
+    >>> say_my_name("", "")  # doctest: +NORMALIZE_WHITESPACE
+    My name is
+
+The function returns None:
+
+    >>> say_my_name("Bob", "Dylan") is None
+    My name is Bob Dylan
+    True
+
+A non-string first_name raises a TypeError:
+
+    >>> say_my_name(12, "Smith")
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+A non-string last_name raises a TypeError:
+
+    >>> say_my_name("John", 98)
+    Traceback (most recent call last):
+    TypeError: last_name must be a string
+
+A non-string first_name with a non-string last_name still checks
+first_name first:
+
+    >>> say_my_name(12, 98)
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
