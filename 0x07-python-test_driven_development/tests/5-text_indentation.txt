@@ -1,0 +1,67 @@
+The ``text_indentation`` function
+====================================
+
+Import the function:
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Print text containing all three trigger characters:
+
+    >>> text_indentation("Le programme ne fonctionne, pourquoi? Il retourne une erreur. Tu peux verifier stp: le probleme vient de la boucle.")
+    Le programme ne fonctionne, pourquoi?
+    <BLANKLINE>
+    Il retourne une erreur.
+    <BLANKLINE>
+    Tu peux verifier stp:
+    <BLANKLINE>
+    le probleme vient de la boucle.
+    <BLANKLINE>
+
+Print an empty string prints nothing:
+
+    >>> text_indentation("")
+
+Print text with no trigger characters:
+
+    >>> text_indentation("Hello World")
+    Hello World
+
+Print text with extra spaces around punctuation:
+
+    >>> text_indentation("Hello.   World?   Bye:")
+    Hello.
+    <BLANKLINE>
+    World?
+    <BLANKLINE>
+    Bye:
+    <BLANKLINE>
+
+Print text with leading and trailing spaces:
+
+    >>> text_indentation("   Hello World   ")
+    Hello World
+
+The function returns None:
+
+    >>> text_indentation("Bye.") is None
+    Bye.
+    <BLANKLINE>
+    True
+
+A non-string argument raises a TypeError:
+
+    >>> text_indentation(12)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+A list argument raises a TypeError:
+
+    >>> text_indentation(["Hello"])
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+None as an argument raises a TypeError:
+
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+    TypeError: text must be a string
