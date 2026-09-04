@@ -1,0 +1,6 @@
+262
+
+The range is confirmed as exactly -5 to 256 inclusive, 
+giving 262 total pre-cached int singletons that exist in memory 
+before any line of int.py — including line 1 (print("I"), 
+which creates zero ints itself) — ever executes.
