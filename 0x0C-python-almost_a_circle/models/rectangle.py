@@ -1,16 +1,14 @@
 #!/usr/bin/python3
-"""Defines the Rectangle class."""
-
+"""Module that defines the Rectangle class."""
 from models.base import Base
 
 
 class Rectangle(Base):
-    """Represents a rectangle."""
+    """Rectangle class that inherits from Base."""
 
     def __init__(self, width, height, x=0, y=0, id=None):
-        """Initialize a Rectangle instance."""
+        """Initialize a Rectangle (setters validate every value)."""
         super().__init__(id)
-
         self.width = width
         self.height = height
         self.x = x
@@ -18,40 +16,56 @@ class Rectangle(Base):
 
     @property
     def width(self):
-        """Return the width."""
         return self.__width
 
     @width.setter
     def width(self, value):
-        """Set the width."""
+        self.__validate_positive("width", value)
         self.__width = value
 
     @property
     def height(self):
-        """Return the height."""
         return self.__height
 
     @height.setter
     def height(self, value):
-        """Set the height."""
+        self.__validate_positive("height", value)
         self.__height = value
 
     @property
     def x(self):
-        """Return the x coordinate."""
         return self.__x
 
     @x.setter
     def x(self, value):
-        """Set the x coordinate."""
+        self.__validate_non_negative("x", value)
         self.__x = value
 
     @property
     def y(self):
-        """Return the y coordinate."""
         return self.__y
 
     @y.setter
     def y(self, value):
-        """Set the y coordinate."""
+        self.__validate_non_negative("y", value)
         self.__y = value
+
+    @staticmethod
+    def __validate_integer(name, value):
+        """Raise TypeError if value is not an integer."""
+        if type(value) is not int:
+            raise TypeError("{} must be an integer".format(name))
+
+    @staticmethod
+    def __validate_positive(name, value):
+        """Validate width/height: integer and > 0."""
+        Rectangle.__validate_integer(name, value)
+        if value <= 0:
+            raise ValueError("{} must be > 0".format(name))
+
+    @staticmethod
+    def __validate_non_negative(name, value):
+        """Validate x/y: integer and >= 0."""
+        Rectangle.__validate_integer(name, value)
+        if value < 0:
+            raise ValueError("{} must be >= 0".format(name))
