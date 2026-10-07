@@ -69,3 +69,12 @@ class Rectangle(Base):
         Rectangle.__validate_integer(name, value)
         if value < 0:
             raise ValueError("{} must be >= 0".format(name))
+
+    def area(self):
+        return self.__width * self.__height
+
+    def display(self):
+        if self.__width == 0 or self.__height == 0:
+            return
+        for _ in range(self.__height):
+            print("#" * self.__width)
