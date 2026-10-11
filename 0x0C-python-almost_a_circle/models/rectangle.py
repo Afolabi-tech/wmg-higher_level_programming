@@ -84,6 +84,7 @@ class Rectangle(Base):
         return "[rectangle] ({}) {}/{} - {}/{}".format(
                 self.id, self.x, self.y, self.width, self.height)
 
+    """
     def update(self, *args):
         if len(args) > 0:
             self.id = args[0]
@@ -95,3 +96,21 @@ class Rectangle(Base):
             self.x = args[3]
         if len(args) > 4:
             self.y = args[4]
+    """
+
+    def update(self, *args, **kwargs):
+        """Assigns attributes to the instance.
+
+        *args order: id, width, height, x, y
+        **kwargs is only used if *args is empty.
+        """
+        if args and len(args) != 0:
+            attrs = ["id", "width", "height", "x", "y"]
+            for i, value in enumerate(args):
+                if i >= len(attrs):
+                    break
+                setattr(self, attrs[i], value)
+        else:
+            for key, value in kwargs.items():
+                if key in ("id", "width", "height", "x", "y"):
+                    setattr(self, key, value)
